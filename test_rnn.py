@@ -37,12 +37,10 @@ print('Mean squared error on test set:', mse)
 
 # Use model to rank experts for a new query
 new_query = np.array([[2, 7, 12, 1]])
-rankings = model.predict(new_query)
-print('Ranking of experts for the new query:',rankings)
-
-new_query = new_query.reshape(1, 1, new_query.shape[1])
+new_query = np.reshape(new_query, (new_query.shape[0], 1, new_query.shape[1]))
+rankings = model.predict(np.reshape(X, (X.shape[0], 1, X.shape[1])))
 rankings = np.squeeze(rankings)
 data['predicted_score'] = rankings
 ranked_experts = data.sort_values('predicted_score', ascending=False)[['expert_id', 'predicted_score']].reset_index(drop=True)
-
+print('Ranking of experts for the new query:')
 print(ranked_experts)

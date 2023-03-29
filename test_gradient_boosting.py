@@ -21,10 +21,10 @@ mse = mean_squared_error(y_test, y_pred)
 print('Mean squared error on test set:', mse)
 # New query features
 new_query = pd.DataFrame({
-    'education_level': [2],
-    'years_of_experience': [7],
-    'projects': [12],
-    'awards': [1]
+    'education_level': [3],
+    'years_of_experience': [6],
+    'projects': [15],
+    'awards': [2]
 })
 expert_scores = model.predict(pd.DataFrame(new_query))
 print("Ranking of experts for the new query",expert_scores)

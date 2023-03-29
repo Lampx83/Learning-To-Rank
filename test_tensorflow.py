@@ -35,12 +35,12 @@ mse = mean_squared_error(y_test, y_pred)
 print('Mean squared error on test set:', mse)
 
 # Use model to rank experts for a new query
-new_query = np.array([[2, 7, 12 , 1]])
-expert_scores = model.predict(pd.DataFrame(new_query))
-print("Ranking of experts for the new query",expert_scores)
-
+new_query = np.array([[3, 6, 15, 2]])
+rankings = model.predict(new_query)
+print('Ranking of experts for the new query:',rankings)
 rankings = model.predict(X)
 rankings = np.squeeze(rankings)
 data['predicted_score'] = rankings
 ranked_experts = data.sort_values('predicted_score', ascending=False)[['expert_id', 'predicted_score']].reset_index(drop=True)
+
 print(ranked_experts)
