@@ -11,11 +11,11 @@ Học để xếp hạng là một lĩnh vực trong Học máy (Machine Learnin
 ### Gradient Boosting
 Gradient Boosting là một thuật toán tập hợp các mô hình dự đoán đơn giản, chẳng hạn như cây quyết định, để tạo ra một mô hình dự đoán mạnh mẽ hơn. Thuật toán này tập trung vào việc tối thiểu hóa sai số của mô hình trên tập huấn luyện bằng cách thêm các mô hình mới và cập nhật trọng số các mẫu.
 
-### Tensorflow
-Tensorflow là một thư viện Học sâu (Deep Learning) được sử dụng rộng rãi trong nghiên cứu và ứng dụng thực tế. Nó cho phép người dùng xây dựng các mô hình Học sâu như mạng nơ-ron và sử dụng chúng để giải quyết các bài toán phức tạp.
-
 ### XGBoost
 XGBoost là một thuật toán Học máy đang được sử dụng rộng rãi trong cả Học sâu và Học máy cổ điển. Nó là một loại thuật toán GBDT (Gradient Boosting Decision Tree) được tối ưu hóa để đạt được hiệu quả cao và thời gian chạy nhanh.
+
+### Tensorflow
+Tensorflow là một thư viện Học sâu (Deep Learning) được sử dụng rộng rãi trong nghiên cứu và ứng dụng thực tế. Nó cho phép người dùng xây dựng các mô hình Học sâu như mạng nơ-ron và sử dụng chúng để giải quyết các bài toán phức tạp.
 
 ## Hướng dẫn cài đặt và sử dụng
 ### Cài đặt
@@ -30,6 +30,7 @@ pip install scikit-learn
 Để chạy sử dụng các file tương ứng
 ```
 python test_gradient_boosting.py 
-python test_tensorflow.py
 python test_xboost.py
+python test_tensorflow.py
+python test_rnn.py
 ```
