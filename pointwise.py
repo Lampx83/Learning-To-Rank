@@ -28,7 +28,7 @@ models = []
 models.append((1940, 'LinearRegression', LinearRegression()))
 models.append((1970, 'KNeighborsRegressor', KNeighborsRegressor(n_neighbors=5, weights='distance', algorithm='auto', leaf_size=30)))
 models.append((1980, 'DecisionTreeRegressor', DecisionTreeRegressor(max_depth=3, random_state=42)))
-models.append((1995, 'Support Vector Regression,', SVR(kernel='linear', C=1.0, epsilon=0.1)))
+models.append((1995, 'Support Vector Regression', SVR(kernel='linear', C=1.0, epsilon=0.1)))
 models.append((1995, 'AdaBoostRegressor', AdaBoostRegressor()))
 models.append((1995, 'RandomForestRegressor', RandomForestRegressor(n_estimators=100, max_depth=5, random_state=42)))
 models.append((1999, 'GradientBoostingRegressor', GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)))
