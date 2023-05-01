@@ -25,26 +25,26 @@ train_target = train_data['relevance_score']
 
 # 4 Evaluate models
 models = []
-models.append((1940, 'LinearRegression', LinearRegression()))
-models.append((1970, 'KNeighborsRegressor', KNeighborsRegressor(n_neighbors=5, weights='distance', algorithm='auto', leaf_size=30)))
-models.append((1980, 'DecisionTreeRegressor', DecisionTreeRegressor(max_depth=3, random_state=42)))
+models.append((1940, 'Linear Regression', LinearRegression()))
+models.append((1970, 'K Neighbor sRegressor', KNeighborsRegressor(n_neighbors=5, weights='distance', algorithm='auto', leaf_size=30)))
+models.append((1980, 'Decision Tree Regressor', DecisionTreeRegressor(max_depth=3, random_state=42)))
 models.append((1995, 'Support Vector Regression', SVR(kernel='linear', C=1.0, epsilon=0.1)))
-models.append((1995, 'AdaBoostRegressor', AdaBoostRegressor()))
-models.append((1995, 'RandomForestRegressor', RandomForestRegressor(n_estimators=100, max_depth=5, random_state=42)))
-models.append((1999, 'GradientBoostingRegressor', GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)))
-models.append((2000, 'BayesianRidge', BayesianRidge()))
-models.append((2006, 'MLPRegressor', MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu', solver='adam', alpha=0.0001, max_iter=1000, random_state=42)))
-models.append((2014, 'XGBRegressor', xgb.XGBRegressor(objective='reg:squarederror', n_estimators=1000))),
-models.append((2017, 'CatBoostRegressor', CatBoostRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_seed=42)))
-models.append((2021, 'TensorFlowRegressor', tf.keras.Sequential([tf.keras.layers.Dense(64, activation='relu'), tf.keras.layers.Dense(1)])))
-models.append((2022, 'LightGBM', lgb.LGBMRegressor()))
+models.append((1995, 'Ada Boost Regressor', AdaBoostRegressor()))
+models.append((1995, 'Random Forest Regressor', RandomForestRegressor(n_estimators=100, max_depth=5, random_state=42)))
+models.append((1999, 'Gradient Boosting Regressor', GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)))
+models.append((2000, 'Bayesian Ridge', BayesianRidge()))
+models.append((2006, 'MLP Regressor', MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu', solver='adam', alpha=0.0001, max_iter=1000, random_state=42)))
+models.append((2014, 'XGB Regressor', xgb.XGBRegressor(objective='reg:squarederror', n_estimators=1000))),
+models.append((2017, 'Cat Boost Regressor', CatBoostRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_seed=42)))
+models.append((2021, 'TensorFlow Regressor', tf.keras.Sequential([tf.keras.layers.Dense(64, activation='relu'), tf.keras.layers.Dense(1)])))
+models.append((2022, 'Light GBM', lgb.LGBMRegressor()))
 
 
 results = []
 names = []
 
 for year, name, model in models:
-    if name == 'TensorFlowRegressor':
+    if name == 'TensorFlow Regressor':
         model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     model.fit(train_features, train_target)
     test_features = test_data.drop(['expert_id', 'relevance_score'], axis=1)
