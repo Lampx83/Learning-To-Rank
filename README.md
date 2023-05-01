@@ -1,26 +1,25 @@
 # Learning to Rank
-Sử dụng Gradient Boosting, XGBoost và Tensorflow để xếp hạng dữ liệu.
-
-## Giới thiệu về Learning to Rank
-Learning to Rank (LTR) là một lĩnh vực trong Học máy/Học sâu (Machine/Deep Learning) và Tìm kiếm thông tin (Information Retrieval) nghiên cứu các phương pháp để xếp hạng các tài liệu dựa trên một số yếu tố nhất định.
-
-## Giới thiệu về các thuật toán xếp hạng
-
-### Gradient Boosting
-Gradient Boosting là một thuật toán tập hợp các mô hình dự đoán đơn giản, chẳng hạn như cây quyết định, để tạo ra một mô hình dự đoán mạnh mẽ hơn. Thuật toán này tập trung vào việc tối thiểu hóa sai số của mô hình trên tập huấn luyện bằng cách thêm các mô hình mới và cập nhật trọng số các mẫu.
-
-### XGBoost
-XGBoost là một thuật toán Học máy đang được sử dụng rộng rãi trong cả Học sâu và Học máy cổ điển. Nó cũng là một loại thuật toán GBDT (Gradient Boosting Decision Tree) được tối ưu hóa để đạt được hiệu quả cao và thời gian chạy nhanh.
-
-### Tensorflow
-Tensorflow là một thư viện Học sâu (Deep Learning) được sử dụng rộng rãi trong nghiên cứu và ứng dụng thực tế. Nó cho phép người dùng xây dựng các mô hình Học sâu như mạng nơ-ron và sử dụng chúng để giải quyết các bài toán phức tạp.
+Các mô hình Learning to rank được được thử nghiệm bao gồm:
+- Linear Regression
+- KNeighbors Regressor
+- Decision Tree Regressor
+- Support Vector Regression
+- AdaBoost Regressor
+- Random Forest Regressor
+- Gradient Boosting Regressor
+- Bayesian Ridge
+- MLP Regressor
+- XGB Regressor
+- CatBoost Regressor
+- TensorFlow Regressor
+- LightGBM Regressor
 
 ## Dữ liệu
 Dữ liệu huấn luyện và test trong file expert_data.csv. Các feature gồm có:
-- education_level: Trình độ học vấn (1: PhD, 2: Master, 3: Bachelor)
-- years_of_experience: Số năm kinh nghiệm
-- projects: Số dự án đã tham gia
-- awards: Số giải thưởng (có thể thay bằng số chứng chỉ)
+- **education_level**: Trình độ học vấn (1: PhD, 2: Master, 3: Bachelor)
+- **years_of_experience**: Số năm kinh nghiệm
+- **projects**: Số dự án đã tham gia
+- **awards**: Số giải thưởng (có thể thay bằng số chứng chỉ)
 File dữ liệu mẫu như sau:
 ```data
 expert_id,education_level,years_of_experience,projects,awards,relevance_score
@@ -36,22 +35,25 @@ expert_id,education_level,years_of_experience,projects,awards,relevance_score
 10,2,4,8,0,0.65
 
 ```
-
-
-## Hướng dẫn cài đặt và sử dụng
-### Cài đặt
-Để cài đặt các thư viện cần thiết cho dự án này, chúng ta có thể sử dụng pip. Chạy các lệnh sau để cài đặt các thư viện:
+## Cách sử dụng
+### Chuẩn bị dữ liệu
+Các dữ liệu đầu vào nên được lưu dưới dạng file CSV với tên "expert_data.csv" và các cột theo đúng thứ tự: expert_id, education_level, years_of_experience, projects, awards, relevance_score.
+Sử dụng đoạn mã data = pd.read_csv('expert_data.csv') để tải dữ liệu từ file CSV vào biến data.
+### Chia dữ liệu thành tập huấn luyện và tập kiểm tra
+Sử dụng đoạn mã 
 ```
-pip install pandas
-pip install xgboost
-pip install tensorflow
-pip install scikit-learn
+train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 ```
-### Chạy
-Để chạy sử dụng các file tương ứng
+để chia dữ liệu thành tập huấn luyện và tập kiểm tra.
+### Chuẩn bị dữ liệu cho việc huấn luyện
+Sử dụng đoạn mã 
 ```
-python test_gradient_boosting.py 
-python test_xboost.py
-python test_tensorflow.py
-python test_rnn.py
+train_features = train_data.drop(['expert_id', 'relevance_score'], axis=1) 
+train_target = train_data['relevance_score'] 
 ```
+để tạo ra các đặc trưng huấn luyện và nhãn huấn luyện.
+### Đánh giá các mô hình học máy
+đánh giá các mô hình Learning to rank bằng cách tính toán các chỉ số đánh giá như: 
+- Mean Squared Error (MSE)
+- Mean Absolute Error (MAE)
+- R2 Score.

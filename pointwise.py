@@ -1,9 +1,7 @@
 import pandas as pd
-import lightgbm as lgb
-import tensorflow as tf
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor, AdaBoostRegressor
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
@@ -11,18 +9,15 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.linear_model import BayesianRidge
 from sklearn.tree import DecisionTreeRegressor
-import xgboost as xgb
 from catboost import CatBoostRegressor
+import xgboost as xgb
+import lightgbm as lgb
+import tensorflow as tf
 
 # 1 Load data
 data = pd.read_csv('expert_data.csv')
 # 2 Split data into training and testing sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
-
-X = data.drop(['expert_id', 'relevance_score'], axis=1)
-y = data['relevance_score']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=1)
 
 # 3 Prepare data for training
 train_features = train_data.drop(['expert_id', 'relevance_score'], axis=1)
