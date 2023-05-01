@@ -61,17 +61,17 @@ train_target = train_data['relevance_score']
 ## Kết quả chạy
 ```
                              Year        MSE       MAE    R2 Score
-Linear Regression            1940   0.010100  0.100481    0.838405
-K Neighbor sRegressor        1970   0.021245  0.139952    0.660072
-Decision Tree Regressor      1980   0.010000  0.100000    0.840000
-Support Vector Regression    1995   0.027362  0.164467    0.562211
-Ada Boost Regressor          1995   0.006250  0.075000    0.900000
-Random Forest Regressor      1995   0.012996  0.108250    0.792062
-Gradient Boosting Regressor  1999   0.007569  0.085836    0.878901
-Bayesian Ridge               2000   0.016681  0.128719    0.733103
-MLP Regressor                2006   0.034835  0.137175    0.442645
-XGB Regressor                2014   0.006312  0.075316    0.899004
-Cat Boost Regressor          2017   0.008764  0.088468    0.859770
-TensorFlow Regressor         2021  51.778594  5.478705 -827.457501
-Light GBM                    2022   0.073789  0.250000   -0.180625
+Linear Regression            1940  0.010100  0.100481   0.838405
+K Neighbor sRegressor        1970  0.021245  0.139952   0.660072
+Decision Tree Regressor      1980  0.010000  0.100000   0.840000
+Support Vector Regression    1995  0.027362  0.164467   0.562211
+Ada Boost Regressor          1995  0.010000  0.100000   0.840000
+Random Forest Regressor      1995  0.012996  0.108250   0.792062
+Gradient Boosting Regressor  1999  0.007569  0.085836   0.878901
+Bayesian Ridge               2000  0.016681  0.128719   0.733103
+MLP Regressor                2006  0.034835  0.137175   0.442645
+XGB Regressor                2014  0.006312  0.075316   0.899004
+Cat Boost Regressor          2017  0.008764  0.088468   0.859770
+TensorFlow Regressor         2021  3.220802  1.432241 -50.532838
+Light GBM                    2022  0.073789  0.250000  -0.180625
 ```
