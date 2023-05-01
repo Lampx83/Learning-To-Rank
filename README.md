@@ -74,5 +74,4 @@ XGBRegressor                2014  0.006312  0.075316   0.899004
 CatBoostRegressor           2017  0.008764  0.088468   0.859770
 TensorFlowRegressor         2021  1.414636  1.112362 -21.634176
 LightGBM                    2022  0.073789  0.250000  -0.180625
-MSE: Mean Squared Error, MAE: Mean Absolute Error
 ```
