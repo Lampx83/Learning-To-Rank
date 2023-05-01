@@ -1,4 +1,5 @@
 import pandas as pd
+import lightgbm as lgb
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -41,6 +42,8 @@ models.append((2006, 'MLPRegressor', MLPRegressor(hidden_layer_sizes=(100, 50), 
 models.append((2014, 'XGBRegressor', xgb.XGBRegressor(objective='reg:squarederror', n_estimators=1000))),
 models.append((2017, 'CatBoostRegressor', CatBoostRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_seed=42)))
 models.append((2021, 'TensorFlowRegressor', tf.keras.Sequential([tf.keras.layers.Dense(64, activation='relu'), tf.keras.layers.Dense(1)])))
+models.append((2022, 'LightGBM', lgb.LGBMRegressor()))
+
 
 results = []
 names = []
