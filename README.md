@@ -64,7 +64,7 @@ train_target = train_data['relevance_score']
 LinearRegression            1940  0.010100  0.100481   0.838405
 KNeighborsRegressor         1970  0.021245  0.139952   0.660072
 DecisionTreeRegressor       1980  0.010000  0.100000   0.840000
-Support Vector Regression  1995  0.027362  0.164467   0.562211
+Support Vector Regression   1995  0.027362  0.164467   0.562211
 AdaBoostRegressor           1995  0.006250  0.075000   0.900000
 RandomForestRegressor       1995  0.012996  0.108250   0.792062
 GradientBoostingRegressor   1999  0.007569  0.085836   0.878901
