@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Load data
-data = pd.read_csv('expert_data.csv')
+data = pd.read_csv('../expert_data.csv')
 
 # Split data into training and testing sets
 X = data.drop(['expert_id', 'relevance_score'], axis=1)

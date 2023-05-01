@@ -1,30 +1,31 @@
 import pandas as pd
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
 # Load data
-data = pd.read_csv('expert_data.csv')
+data = pd.read_csv('./expert_data.csv')
 
 # Split data into training and testing sets
 X = data.drop(['expert_id', 'relevance_score'], axis=1)
 y = data['relevance_score']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train Gradient Boosting model
-model = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
+# Train linear regression model
+model = LinearRegression()
 model.fit(X_train, y_train)
 
 # Evaluate model on test set
 y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 print('Mean squared error on test set:', mse)
+
 # New query features
 new_query = pd.DataFrame({
     'education_level': [3],
     'years_of_experience': [6],
     'projects': [15],
-    'awards': [2]
+    'awards': [2],
 })
 expert_scores = model.predict(pd.DataFrame(new_query))
 print("Ranking of experts for the new query",expert_scores)
