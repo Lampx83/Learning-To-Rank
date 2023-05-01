@@ -56,7 +56,7 @@ for year, name, model in models:
     results.append((year, mse, mae, r2))
     names.append(name)
 
-df_results = pd.DataFrame(results, columns=['year', 'MSE', 'MAE', 'R2 Score'], index=names)
+df_results = pd.DataFrame(results, columns=['Year', 'MSE', 'MAE', 'R2 Score'], index=names)
 # df_results = df_results.sort_values(by=['MSE'])
 print("##############################################################")
 print(df_results)

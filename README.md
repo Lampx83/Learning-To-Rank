@@ -60,7 +60,7 @@ train_target = train_data['relevance_score']
 
 ## Kết quả chạy
 ```
-                            year       MSE       MAE   R2 Score
+                            Year       MSE       MAE   R2 Score
 LinearRegression            1940  0.010100  0.100481   0.838405
 KNeighborsRegressor         1970  0.021245  0.139952   0.660072
 DecisionTreeRegressor       1980  0.010000  0.100000   0.840000
