@@ -63,7 +63,7 @@ Các mô hình Learning to rank được được thử nghiệm bao gồm:
 - LightGBM Regressor
 
 ### Dữ liệu
-Dữ liệu huấn luyện và test trong file expert_data.csv. Các feature gồm có:
+Dữ liệu huấn luyện gồm các đặc trưng:
 - **education_level**: Trình độ học vấn (1: Kỹ sư, 2: thạc sỹ, 3: tiến sỹ, 4: giáo sư)
 - **years_of_experience**: Số năm kinh nghiệm
 - **papers**: Số bài báo đã viết
