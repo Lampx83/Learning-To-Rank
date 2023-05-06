@@ -1,4 +1,14 @@
-# step1
+# Step 1: PhoBERT Text Classification with PyTorch
+Huấn luyện một mô hình phân loại văn bản bằng việc sử dụng mô hình ngôn ngữ PhoBERT và đánh giá hiệu suất của mô hình trên một tập dữ liệu kiểm tra.
+### Dữ liệu
+```csv
+text,label
+"Nguyễn Văn Đức là một giáo sư ngành xây dựng và giảng dạy tại đại học Xây dựng Hà Nội. Trong suốt sự nghiệp của tôi, tôi đã tham gia vào nhiều dự án xây dựng lớn, từ các công trình cầu đường cho đến nhà máy. Giáo sư đã có 100 bài báo và 4 giải thưởng",1
+"Cuốn sách này nói về lịch sử của Trung Quốc, và là một tài liệu rất quý giá cho những ai quan tâm đến lịch sử và văn hóa của Trung Quốc.",0
+"Công ty tôi đã thực hiện thành công nhiều dự án lớn trong lĩnh vực xây dựng cầu đường và nhà máy. Chúng tôi luôn đặt chất lượng sản phẩm lên hàng đầu, và tôi tự hào vì đã đóng góp vào những công trình đó.",0
+```
+
+## Kết quả chạy
 ```
 Actual:   [0, 1, 1, 0, 1, 1, 0]
 Predict:  [0, 1, 1, 0, 1, 1, 1]
@@ -11,8 +21,32 @@ Predict:  [0, 1, 1, 0, 1, 1, 1]
    macro avg       0.90      0.83      0.84         7
 weighted avg       0.89      0.86      0.85         7
 ```
-
-# Learning to Rank
+# Step 2:
+Trích xuất thông tin từ các hồ sơ chuyên gia và lưu trữ thông tin trong một Pandas DataFrame.
+### Dữ liệu
+Văn bản chuyên gia đã phát hiện được ở bước trên
+### Kết quả chạy
+```commandline
+ education_level  years_of_experience  papers  awards
+0                 4                    0       100       4
+1                 2                   10        40       0
+2                 0                    0         0       0
+3                 0                    0        12       0
+4                 0                    8         0       0
+5                 0                    0        25       2
+6                 3                    0        10       0
+7                 0                    0         0       3
+8                 3                    0         5       0
+9                 4                    0         8       4
+10                0                    0         0       0
+11                0                    0         0       0
+12                0                    0         0       0
+13                0                    8        15       0
+14                0                    6        11       0
+15                0                   10        20       1
+16                0                    7        15       0
+```
+# Step 3: Learning to Rank
 Các mô hình Learning to rank được được thử nghiệm bao gồm:
 - Linear Regression
 - KNeighbors Regressor
@@ -28,15 +62,15 @@ Các mô hình Learning to rank được được thử nghiệm bao gồm:
 - TensorFlow Regressor
 - LightGBM Regressor
 
-## Dữ liệu
+### Dữ liệu
 Dữ liệu huấn luyện và test trong file expert_data.csv. Các feature gồm có:
 - **education_level**: Trình độ học vấn (1: PhD, 2: Master, 3: Bachelor)
 - **years_of_experience**: Số năm kinh nghiệm
-- **projects**: Số dự án đã tham gia
+- **papers**: Số bài báo đã viết
 - **awards**: Số giải thưởng (có thể thay bằng số chứng chỉ)
 File dữ liệu mẫu như sau:
 ```data
-expert_id,education_level,years_of_experience,projects,awards,relevance_score
+expert_id,education_level,years_of_experience,papers,awards,relevance_score
 1,2,5,10,0,0.7
 2,1,8,20,2,0.9
 3,2,3,5,1,0.6
@@ -49,30 +83,11 @@ expert_id,education_level,years_of_experience,projects,awards,relevance_score
 10,2,4,8,0,0.65
 
 ```
-## Cách sử dụng
-### Chuẩn bị dữ liệu
-Các dữ liệu đầu vào nên được lưu dưới dạng file CSV với tên "expert_data.csv" và các cột theo đúng thứ tự: expert_id, education_level, years_of_experience, projects, awards, relevance_score.
-Sử dụng đoạn mã data = pd.read_csv('expert_data.csv') để tải dữ liệu từ file CSV vào biến data.
-### Chia dữ liệu thành tập huấn luyện và tập kiểm tra
-Sử dụng đoạn mã 
-```
-train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
-```
-để chia dữ liệu thành tập huấn luyện và tập kiểm tra.
-### Chuẩn bị dữ liệu cho việc huấn luyện
-Sử dụng đoạn mã 
-```
-train_features = train_data.drop(['expert_id', 'relevance_score'], axis=1) 
-train_target = train_data['relevance_score'] 
-```
-để tạo ra các đặc trưng huấn luyện và nhãn huấn luyện.
-### Đánh giá các mô hình học máy
-đánh giá các mô hình Learning to rank bằng cách tính toán các chỉ số đánh giá như: 
+### Kết quả chạy
+Đánh giá các mô hình Learning to rank bằng cách tính toán các chỉ số đánh giá như: 
 - Mean Squared Error (MSE)
 - Mean Absolute Error (MAE)
 - R2 Score.
-
-## Kết quả chạy
 ```
                              Year        MSE       MAE    R2 Score
 Linear Regression            1940  0.010100  0.100481   0.838405

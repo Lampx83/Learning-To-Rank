@@ -60,7 +60,7 @@ for profile in df['profile']:
     result = extract_data(profile)
     data.append(result)
 pd.set_option('display.max_columns', None)
-df = pd.DataFrame(data, columns=['education_level', 'years_of_experience', 'projects', 'awards'])
+df = pd.DataFrame(data, columns=['education_level', 'years_of_experience', 'papers', 'awards'])
 
 # Print the merged DataFrame
 print(df)
