@@ -21,7 +21,7 @@ Predict:  [0, 1, 1, 0, 1, 1, 1]
    macro avg       0.90      0.83      0.84         7
 weighted avg       0.89      0.86      0.85         7
 ```
-# Step 2:
+# Step 2: Extract Features
 Trích xuất thông tin từ các hồ sơ chuyên gia và lưu trữ thông tin trong một Pandas DataFrame.
 ### Dữ liệu
 Văn bản chuyên gia đã phát hiện được ở bước trên
