@@ -1,4 +1,4 @@
-expert_id,education_level,years_of_experience,projects,awards,relevance_score
+expert_id,education_level,years_of_experience,papers,awards,relevance_score
 1,2,5,10,0,0.7
 2,1,8,20,2,0.9
 3,2,3,5,1,0.6

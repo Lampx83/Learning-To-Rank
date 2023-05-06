@@ -15,7 +15,7 @@ import lightgbm as lgb
 import tensorflow as tf
 
 # 1 Load data
-data = pd.read_csv('expert_data.csv')
+data = pd.read_csv('step3_data.csv')
 # 2 Split data into training and testing sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
 
@@ -26,7 +26,7 @@ train_target = train_data['relevance_score']
 # 4 Evaluate models
 models = []
 models.append((1940, 'Linear Regression', LinearRegression()))
-models.append((1970, 'K Neighbor sRegressor', KNeighborsRegressor(n_neighbors=5, weights='distance', algorithm='auto', leaf_size=30)))
+models.append((1970, 'K Neighbors Regressor', KNeighborsRegressor(n_neighbors=5, weights='distance', algorithm='auto', leaf_size=30)))
 models.append((1980, 'Decision Tree Regressor', DecisionTreeRegressor(max_depth=3, random_state=42)))
 models.append((1995, 'Support Vector Regression', SVR(kernel='linear', C=1.0, epsilon=0.1)))
 models.append((1995, 'Ada Boost Regressor', AdaBoostRegressor()))
@@ -77,7 +77,7 @@ print('R2 Score             :', r2_score(test_target, test_predictions))
 new_query = pd.DataFrame({
     'education_level': [3],
     'years_of_experience': [6],
-    'projects': [15],
+    'papers': [15],
     'awards': [2],
 })
 expert_scores = model.predict(pd.DataFrame(new_query))
@@ -94,7 +94,3 @@ query_ranking = ranked_experts[['expert_id', 'predicted_score']].reset_index(dro
 print('Sort experts by predicted relevance score:')
 print(query_ranking)
 print("Done")
-# Compare models
-# Mean Squared Error (MSE): Đây là một chỉ số đánh giá khoảng cách giữa các giá trị dự đoán và giá trị thực tế. Giá trị MSE càng thấp thì mô hình dự đoán càng tốt.
-# Mean Absolute Error (MAE): Đây cũng là một chỉ số đánh giá khoảng cách giữa các giá trị dự đoán và giá trị thực tế. Tuy nhiên, MAE đo khoảng cách tuyệt đối thay vì khoảng cách bình phương. Giá trị MAE càng thấp thì mô hình dự đoán càng tốt.
-# R2 Score: Đây là một chỉ số đánh giá khác đo lường khả năng giải thích của mô hình. Giá trị R2 càng gần 1 thì mô hình càng tốt.

@@ -1,3 +1,17 @@
+# step1
+```
+Actual:   [0, 1, 1, 0, 1, 1, 0]
+Predict:  [0, 1, 1, 0, 1, 1, 1]
+              precision    recall  f1-score   support
+
+  non-expert       1.00      0.67      0.80         3
+      expert       0.80      1.00      0.89         4
+
+    accuracy                           0.86         7
+   macro avg       0.90      0.83      0.84         7
+weighted avg       0.89      0.86      0.85         7
+```
+
 # Learning to Rank
 Các mô hình Learning to rank được được thử nghiệm bao gồm:
 - Linear Regression
