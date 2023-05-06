@@ -64,7 +64,7 @@ Các mô hình Learning to rank được được thử nghiệm bao gồm:
 
 ### Dữ liệu
 Dữ liệu huấn luyện và test trong file expert_data.csv. Các feature gồm có:
-- **education_level**: Trình độ học vấn (1: PhD, 2: Master, 3: Bachelor)
+- **education_level**: Trình độ học vấn (1: Kỹ sư, 2: thạc sỹ, 3: tiến sỹ, 4: giáo sư)
 - **years_of_experience**: Số năm kinh nghiệm
 - **papers**: Số bài báo đã viết
 - **awards**: Số giải thưởng (có thể thay bằng số chứng chỉ)
